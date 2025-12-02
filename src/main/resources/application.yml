@@ -1,0 +1,22 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: kafka-consumer
+  kafka:
+    bootstrap-servers: localhost:9092
+    listener:
+      concurrency: 10
+    topic:
+      consumer: consumer
+    consumer:
+      group-id: kafka-consumer
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      bootstrap-servers: ${spring.kafka.bootstrap-servers}
+
+logging:
+  level:
+    org.apache.kafka: ERROR
+    org.springframework.kafka: ERROR
+    org.springframework.kafka.listener.KafkaMessageListenerContainer: ERROR
